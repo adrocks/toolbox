@@ -288,7 +288,7 @@ def become_billionaire(trader)
                    iss:  @management_api_v2_jwt_signer,
                    data: data }
     jwt        = JWT::Multisig.generate_jwt(payload, keychain, algorithms)
-    url = URI.join(@root_url, 'management/deposits/new')
+    url = URI.join(@root_url, '/api/v2/peatio/management/deposits/new')
     Faraday.post(url, jwt.to_json, 'Content-Type' => 'application/json').assert_success!
   end
 end
